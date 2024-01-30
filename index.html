@@ -1,0 +1,84 @@
+<!doctype html>
+<title>NASM Assembly Formatter</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="title" content="NASM Assembly Formatter" />
+<meta
+  name="description"
+  content="A simple web-based NASM Assembly formatter. Format your NASM Assembly code with ease."
+/>
+<meta name="author" content="diamondburned" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/sakura.css/css/sakura-dark.css"
+/>
+<link rel="stylesheet" href="/style.css" />
+<script src="/script.js" type="module" async defer></script>
+
+<main id="highlighter" disabled>
+  <h1>NASM Assembly Formatter</h1>
+
+  <section class="config">
+    <label for="instruction-indent">Instruction Indent</label>
+    <label for="comment-indent">Comment Indent</label>
+    <input type="number" id="instruction-indent" />
+    <input type="number" id="comment-indent" />
+  </section>
+
+  <section class="code-area">
+    <textarea id="code">
+global _start
+
+
+section .text
+
+   ;Starting point
+_start:
+mov rax,1 ;write(fd, buf, len)
+mov rdi,1  ; fd
+mov rsi, msg   ; buf
+mov rdx,  msglen; len
+  syscall
+
+mov rax,60 ;exit(status)
+mov rdi, 0
+  syscall
+
+section .data
+msg    db &quot;Hello world!&quot;,10
+msglen equ $-msg
+	</textarea
+    >
+    <div class="controls">
+      <button id="copy">Copy</button>
+      <button id="format" class="click-me">
+        Format <kbd>Ctrl</kbd>+<kbd>S</kbd>
+      </button>
+    </div>
+  </section>
+
+  <section class="error-area">
+    <pre id="error"></pre>
+  </section>
+
+  <footer role="button" id="footer">
+    <span class="visible">
+      Powered by
+      <a target="_blank" href="https://libdb.so/nasmfmt">nasmfmt</a>
+    </span>
+    <span>
+      Created by
+      <a target="_blank" href="https://libdb.so">diamondburned</a>
+    </span>
+    <span>Code written here will not be sent to any server</span>
+    <span>
+      Trans rights are human rights
+      <img
+        alt="Trans flag"
+        src="https://em-content.zobj.net/source/google/350/transgender-flag_1f3f3-fe0f-200d-26a7-fe0f.png"
+      />
+    </span>
+  </footer>
+</main>

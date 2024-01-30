@@ -1,0 +1,207 @@
+html,
+body,
+main {
+  height: 100%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  padding-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #c9c9c9;
+  transition: background-color 0.15s ease-in-out;
+}
+
+button:hover {
+  background-color: #ffffff;
+}
+
+button.click-me {
+  outline: 10px solid #5bcefa55;
+  outline-offset: 4px;
+  animation: click-me 0.5s infinite ease-in-out;
+  animation-direction: alternate;
+  position: relative;
+}
+
+button.click-me::before {
+  content: "Click me!";
+  position: absolute;
+  bottom: -3em;
+  left: 0;
+  right: 0;
+  background-color: #5bcefa;
+  color: white;
+  padding: 0.5em;
+  border-radius: 4px;
+  font-size: 0.8em;
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  pointer-events: none;
+}
+
+button.click-me:hover::before {
+  opacity: 1;
+}
+
+@keyframes click-me {
+  0% {
+    outline-offset: 4px;
+    outline-width: 10px;
+  }
+  100% {
+    outline-offset: 8px;
+  }
+}
+
+kbd {
+  background-color: transparent;
+  color: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.1em 0.3em;
+  margin: 0 0.2em;
+}
+
+pre,
+textarea {
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+#error:empty {
+  display: none;
+}
+
+#error {
+  color: #ff6961;
+  outline: 2px solid #ff6961;
+  outline-offset: -2px;
+}
+
+#error::before {
+  content: "Error: ";
+  font-weight: bold;
+}
+
+#highlighter {
+  transition: all 0.15s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+#highlighter[disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+#highlighter .config {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 0.5em;
+}
+
+#highlighter .config > label {
+  font-size: 0.8em;
+  margin: 0;
+}
+
+#code {
+  font-family: monospace;
+  padding: 1em;
+  margin: 0;
+  height: 100%;
+  resize: none;
+  border-radius: 4px;
+}
+
+#highlighter .code-area {
+  position: relative;
+  flex: 1;
+}
+
+#highlighter .code-area .controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  padding: 0.5em;
+  opacity: 0.75;
+  transition: opacity 0.15s ease-in-out;
+}
+
+#highlighter .code-area .controls:hover {
+  opacity: 1;
+}
+
+#output {
+  font-family: monospace !important;
+  font-size: initial !important;
+  line-height: initial !important;
+  padding: 1em;
+  margin-bottom: 0.5em;
+  flex: 1;
+  white-space: pre-wrap;
+  border-radius: 4px;
+}
+
+#output span[class=""] {
+  color: white;
+}
+
+#highlighter footer {
+  background-color: #4a4a4a;
+  border-radius: 4px 4px 0 0;
+  grid-area: footer;
+  position: relative;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+}
+
+#highlighter footer:hover {
+  cursor: pointer;
+  user-select: none;
+  background-color: #5e5e5e;
+  color: white;
+}
+
+#highlighter footer > * {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transition: opacity 0.15s ease-in-out;
+  z-index: -1;
+}
+
+#highlighter footer > .visible {
+  opacity: 0.8;
+  z-index: 1;
+}
+
+#highlighter footer span img {
+  width: auto;
+  height: 1.2em;
+  margin: 0;
+  margin-bottom: -0.2em;
+}
